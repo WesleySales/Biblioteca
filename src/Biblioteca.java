@@ -55,11 +55,17 @@ public class Biblioteca {
         pesquisarLivroPorID(ID_Livro).setEstoque(pesquisarLivroPorID(ID_Livro).getEstoque()-1);
         livrosEmprestados.add(pesquisarLivroPorID(ID_Livro));
     }
+
+    //Cadastra o livro e cria objetos separadamente conforme estoque,
+    //Assim cada livro é gerado com seu proprio código
+    //Alem disso o livro é adicionado a lista de livros do autor, dentro do objeto autor
     public void cadastrarLivro(String titulo,long ID_Autor,int estoque){
-        Livro livro = new Livro(titulo,ID_Autor,estoque);
-        livrosDaBiblioteca.add(livro);
-        pesquisarAutorPorID(ID_Autor).livrosDoAutor.add(livro);
-        livro.setAutor(pesquisarAutorPorID(ID_Autor));
+        for(int i =0;i<estoque;i++){
+            Livro livro = new Livro(titulo,ID_Autor,estoque);
+            livrosDaBiblioteca.add(livro);
+            pesquisarAutorPorID(ID_Autor).livrosDoAutor.add(livro);
+            livro.setAutor(pesquisarAutorPorID(ID_Autor));
+        }
     }
 
     public void exibirLivrosPorAutor(long id) {
