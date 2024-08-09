@@ -14,19 +14,21 @@ public class App {
         biblioteca.cadastrarLivro("Gelo e Fogo",100,3);
         biblioteca.cadastrarLivro("Livro 2",100,2);
         biblioteca.cadastrarLivro("Livro 3",100,2);
-        biblioteca.cadastrarLivro("Livro 4",102,20);
+        biblioteca.cadastrarLivro("Livro 4",102,5);
         biblioteca.cadastrarLivro("Livro 5",102,3);
 
         //Cadastro de usuarios com nome e idade. O ID é gerado automaticamente.
         biblioteca.cadastrarUsuario("Joao Silva",18);
         biblioteca.cadastrarUsuario("Vitor Barreto",22);
 
-        System.out.println(biblioteca.getLivrosDaBiblioteca());
+        //System.out.println(biblioteca.getLivrosDaBiblioteca());
 
-        biblioteca.emprestarLivro(2700,10065);
-        biblioteca.emprestarLivro(2700,10069);
+        biblioteca.emprestarLivro(1,10065);
+        biblioteca.emprestarLivro(1,10069);
+        biblioteca.emprestarLivro(1,10068);
+        biblioteca.emprestarLivro(1,10072);
 
-        System.out.println(biblioteca.getLivrosDaBiblioteca());
+        System.out.println(biblioteca.getLivrosEmprestados());
 
     }
 }

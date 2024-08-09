@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
-    private static long geradorID = 2700;
+    private static long geradorID = 1;
     private String nome;
     private int idade;
     private long userID;

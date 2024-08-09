@@ -51,9 +51,14 @@ public class Biblioteca {
         return livro;
     }
     public void emprestarLivro(long ID_Usuario, long ID_Livro){
-        pesquisarUsuarioPorID(ID_Usuario).listaDeEmprestimos.add(pesquisarLivroPorID(ID_Livro));
-        pesquisarLivroPorID(ID_Livro).setEstoque(pesquisarLivroPorID(ID_Livro).getEstoque()-1);
-        livrosEmprestados.add(pesquisarLivroPorID(ID_Livro));
+        if(pesquisarUsuarioPorID(ID_Usuario).listaDeEmprestimos.size()<3){
+            pesquisarUsuarioPorID(ID_Usuario).listaDeEmprestimos.add(pesquisarLivroPorID(ID_Livro));
+            pesquisarLivroPorID(ID_Livro).setEstoque(pesquisarLivroPorID(ID_Livro).getEstoque()-1);
+            livrosEmprestados.add(pesquisarLivroPorID(ID_Livro));
+            System.out.println(String.format("%s realizou o emprestimo do livro %s",pesquisarUsuarioPorID(ID_Usuario).getNome(),pesquisarLivroPorID(ID_Livro).getTitulo()));
+        } else {
+            System.out.println(String.format("%s bateu o limite de emprestimos simultaneos",pesquisarUsuarioPorID(ID_Usuario).getNome()));
+        }
     }
 
     //Cadastra o livro e cria objetos separadamente conforme estoque,
@@ -99,6 +104,10 @@ public class Biblioteca {
 
     public List<Livro> getLivrosDaBiblioteca() {
         return livrosDaBiblioteca;
+    }
+
+    public List<Livro> getLivrosEmprestados() {
+        return livrosEmprestados;
     }
 
     public List<Autor> getAutoresCadastrados() {
